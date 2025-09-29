@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Placement Preparation</title>
+    <!-- I'll use the new styles you'll provide -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome for additional icons (optional but nice) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- App Header for a more realistic feel -->
+    <header class="app-header">
+        <div class="logo">
+            <i class="fas fa-brain"></i> <!-- Example Logo Icon -->
+            <h1>SkillAssess</h1>
+        </div>
+    </header>
+    
+    <main>
+    <!-- Onboarding Screen 1 - With Illustration -->
+    <div class="screen" id="onboarding1">
+        <div class="onboarding-layout">
+            <div class="onboarding-text">
+                <h1>Select Your Domain</h1>
+                <p class="subtitle">Choose your area of expertise to begin the assessment.</p>
+                <div class="domain-chips" id="domainChips">
+                    <div class="chip" data-domain="frontend"><i class="fas fa-code"></i>Frontend</div>
+                    <div class="chip" data-domain="backend"><i class="fas fa-server"></i>Backend</div>
+                    <div class="chip" data-domain="fullstack"><i class="fas fa-layer-group"></i>Full Stack</div>
+                    <div class="chip" data-domain="android"><i class="fab fa-android"></i>Android</div>
+                    <div class="chip" data-domain="ml"><i class="fas fa-robot"></i>Machine Learning</div>
+                    <div class="chip" data-domain="devops"><i class="fas fa-cloud"></i>DevOps</div>
+                    <div class="chip custom" id="customDomain">+ Custom Domain</div>
+                </div>
+            </div>
+            <div class="onboarding-visual">
+                <div id="lottieOnboarding" style="width:100%;max-width:380px;height:260px;margin:0 auto;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Onboarding Screen 2 -->
+    <div class="screen hidden" id="onboarding2">
+        <h1>Complete Your Profile</h1>
+        <p class="subtitle">This information will be used to personalize your assessment report.</p>
+        
+        <form id="profileForm">
+            <div class="form-group icon-input">
+                <i class="fas fa-user"></i>
+                <input type="text" id="name" placeholder="Full Name" required>
+            </div>
+            <div class="form-group icon-input">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group icon-input">
+                <i class="fas fa-building-columns"></i>
+                <input type="text" id="college" placeholder="College Name" required>
+            </div>
+            <div class="form-group icon-input">
+                 <i class="fas fa-bullseye"></i>
+                <input type="text" id="company" placeholder="Target Company" required>
+            </div>
+            <div class="form-group upload-group">
+                <label for="resume"><i class="fas fa-file-arrow-up"></i> Upload Resume (Optional)</label>
+                <input type="file" id="resume" accept=".pdf,.doc,.docx" class="hidden-file-input">
+                <span class="file-name">No file chosen</span>
+            </div>
+            <div class="form-group toggle-group">
+                 <label for="codingOnly">Take coding round only (skip MCQ)</label>
+                 <label class="switch">
+                    <input type="checkbox" id="codingOnly">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Start Assessment</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div class="screen hidden" id="quizScreen">
+        <div class="quiz-header">
+            <div class="progress-info">Question <span id="currentQuestion">1</span>/20</div>
+            <div class="timer"><i class="far fa-clock"></i> <span id="timer">00:30</span></div>
+        </div>
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="quiz-content">
+            <div class="question" id="question"></div>
+            <div class="options" id="options"></div>
+        </div>
+        <div class="quiz-footer">
+            <button id="nextQuestion" class="hidden">Next Question</button>
+        </div>
+    </div>
+
+    <!-- Coding Screen -->
+    <div class="screen hidden" id="codingScreen">
+        <h2 class="screen-title"><i class="fas fa-terminal"></i> Coding Challenge</h2>
+        <div class="coding-questions">
+            <div class="question-selector">
+                <button id="question1" class="coding-question-btn active">Question 1</button>
+                <!-- Add more buttons if there are more questions -->
+            </div>
+            <div class="coding-area">
+                <div class="question-description" id="codingQuestionDesc"></div>
+                <div class="example-section">
+                    <div class="input-example" id="inputExample"></div>
+                    <div class="output-example" id="outputExample"></div>
+                </div>
+                <div class="editor-toolbar">
+                    <label for="languageSelect"><i class="fas fa-language"></i> Language:</label>
+                    <select id="languageSelect">
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
+                        <option value="cpp">C++</option>
+                    </select>
+                </div>
+                <div id="editorContainer"></div>
+                <div class="coding-buttons">
+                    <button id="runCode"><i class="fas fa-play"></i> Run Code</button>
+                    <button id="submitCode"><i class="fas fa-paper-plane"></i> Submit</button>
+                </div>
+                <div id="testResults" class="test-results hidden">
+                    <div class="test-results-header">
+                        <h3>Test Run</h3>
+                        <span id="testSummary" class="badge"></span>
+                    </div>
+                    <ul id="testList" class="test-list"></ul>
+                    <pre id="runtimeError" class="runtime-error hidden"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Dashboard -->
+    <div class="screen hidden" id="resultScreen">
+        <div class="results-header">
+            <img src="https://storage.googleapis.com/gemini-prod/images/0g0Ina37eG4FAfIY2zh2u8DWh.svg" alt="Success Illustration">
+            <h2>Assessment Complete!</h2>
+            <p>Here is a summary of your performance.</p>
+        </div>
+        <div class="results-content">
+             <!-- Candidate info and total score -->
+            <div class="results-summary-card">
+                 <h3><span id="resultName"></span></h3>
+                 <p><span id="resultDomain"></span> | <span id="resultCollege"></span></p>
+                 <div class="total-score-container">
+                     <p>Total Score</p>
+                     <h2 id="totalScore">-%</h2>
+                 </div>
+            </div>
+            <!-- Score details -->
+            <div class="score-details-grid">
+                <div class="score-card">
+                    <i class="fas fa-list-check score-icon mcq"></i>
+                    <h4>MCQ Score</h4>
+                    <p class="score-value"><span id="mcqScore"></span>/20</p>
+                </div>
+                <div class="score-card">
+                    <i class="fas fa-laptop-code score-icon coding"></i>
+                    <h4>Coding Score</h4>
+                    <p class="score-value"><span id="codingScore"></span>/1</p>
+                </div>
+            </div>
+        </div>
+        <div class="results-footer">
+             <button id="tryAgain">Try Again</button>
+             <button class="primary" id="downloadReport"><i class="fas fa-download"></i> Download Report</button>
+        </div>
+    </div>
+    </main>
+
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                if (window.lottie && document.getElementById('lottieOnboarding')) {
+                    window.lottie.loadAnimation({
+                        container: document.getElementById('lottieOnboarding'),
+                        renderer: 'svg',
+                        loop: true,
+                        autoplay: true,
+                        path: './Images/Exams Preparation..json'
+                    });
+                }
+            } catch (e) { /* ignore */ }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/quiz.js"></script>
+    <script type="module" src="js/coding.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+</body>
+</html>
