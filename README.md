@@ -4,12 +4,12 @@
 </div>
 
 <p align="center">
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/html5-%2523E34F26.svg%3Fstyle%3Dfor-the-badge%26logo%3Dhtml5%26logoColor%3Dwhite" alt="HTML5" />
-<img src="./images/" alt="CSS3" />
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/javascript-%2523323330.svg%3Fstyle%3Dfor-the-badge%26logo%3Djavascript%26logoColor%3D%2523F7DF1E" alt="JavaScript" />
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/node.js-6DA55F%3Fstyle%3Dfor-the-badge%26logo%3Dnode.js%26logoColor%3Dwhite" alt="Node.js" />
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/express.js-%2523404d59.svg%3Fstyle%3Dfor-the-badge%26logo%3Dexpress%26logoColor%3D%252361DAFB" alt="Express.js" />
-<img src="https://www.google.com/search?q=https://img.shields.io/badge/Gemini_API-4285F4%3Fstyle%3Dfor-the-badge%26logo%3Dgoogle%26logoColor%3Dwhite" alt="Gemini API" />
+<img src="Images/logo/html.png" alt="HTML5" />
+<img src="./Images/logo/css.png" alt="CSS3" />
+<img src="Images/logo/javascript.png" alt="JavaScript" />
+<img src="Images/logo/nodejs.png" alt="Node.js" />
+<img src="Images/logo/Express-js.png" alt="Express.js" />
+<img src="Images/logo/google.png" alt="Gemini API" />
 </p>
 
 <p align="center">
